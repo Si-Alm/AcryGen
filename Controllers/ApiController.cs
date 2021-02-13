@@ -6,12 +6,12 @@ using Microsoft.Extensions.Logging;
 namespace AcryGen.Controllers
 {
     [Route("/api")]
-    public class Api : Controller
+    public class ApiController : Controller
     {
         private readonly ILogger _logger;
         private AcGenerator generator;
 
-        public Api(ILogger<AcGenerator> _logger)
+        public ApiController(ILogger<AcGenerator> _logger)
         {
             this._logger = _logger;
             this.generator = new AcGenerator(_logger);

@@ -23,6 +23,11 @@ namespace AcryGen.Controllers
             return View();
         }
 
+        public string ItWorks()
+        {
+            return "itworks";
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

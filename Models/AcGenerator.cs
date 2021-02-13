@@ -33,7 +33,7 @@ namespace AcryGen.Models
             //$"Data Source={environmentPath.ContentRootPath}/app.db"
             for (var i = 0; i < letters.Length; i++)
             {
-                var path = $"{environmentPath.ContentRootPath}/Dictionary/" + letters[i] + ".txt";
+                var path = $"{environmentPath.ContentRootPath}/Dictionary/" + char.ToLower(letters[i]) + ".txt";
                 var lines = File.ReadAllLines(path);
                 var ran = new Random().Next(0, lines.Length - 1);
                 string line = lines[ran];

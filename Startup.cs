@@ -16,9 +16,13 @@ namespace AcryGen
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+
+        private IWebHostEnvironment environmentPath;
+
+        public Startup(IConfiguration configuration, IWebHostEnvironment environmentPath)
         {
             Configuration = configuration;
+            this.environmentPath = environmentPath;
         }
 
         public IConfiguration Configuration { get; }

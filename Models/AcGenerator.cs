@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using AcryGen.Controllers;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Logging;
 
 namespace AcryGen.Models
@@ -9,10 +10,12 @@ namespace AcryGen.Models
     {
 
         private readonly ILogger<AcGenerator> logger;
+        private IWebHostEnvironment environmentPath;
 
-        public AcGenerator(ILogger<AcGenerator> logger)
+        public AcGenerator(ILogger<AcGenerator> logger, IWebHostEnvironment environmentPath)
         {
             this.logger = logger;
+            this.environmentPath = environmentPath;
         }
 
         public char[] getLetters(string acronym)
@@ -27,10 +30,10 @@ namespace AcryGen.Models
             var letters = getLetters(acronym);
             string fullString = "";
             string formattedAcronym = "";
-
+            //$"Data Source={environmentPath.ContentRootPath}/app.db"
             for (var i = 0; i < letters.Length; i++)
             {
-                var path = "Models/Dictionary/" + letters[i] + ".txt";
+                var path = $"{environmentPath.ContentRootPath}/Models/Dictionary/" + letters[i] + ".txt";
                 var lines = File.ReadAllLines(path);
                 var ran = new Random().Next(0, lines.Length - 1);
                 string line = lines[ran];

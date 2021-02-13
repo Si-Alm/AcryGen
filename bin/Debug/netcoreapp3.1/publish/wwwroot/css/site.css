@@ -1,0 +1,95 @@
+﻿/* Remove the navbar's default margin-bottom and rounded borders */ 
+.header {
+    margin-bottom: 0;
+    border-radius: 0;
+    text-align: center;
+    color: white;
+    width: 100%;
+    background-color: #222;
+    padding-bottom: .5em;
+  }
+
+  #main-head {
+      font-size: 3em;
+  }
+
+  #sub-main-head {
+      font-size: 1.25em;
+  }
+
+  svg:hover {
+    cursor: pointer;
+  }
+  
+  /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+  .row.content {
+        height: 80vh;
+        text-align: center;
+    }
+  
+  /* Set black background color, white text and some padding */
+  .footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background-color: #222;
+    color: white;
+    padding: 15px;
+  }
+  
+  /* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
+    .row.content {height:auto;} 
+  }
+
+  #main-container {
+      height: 50vh;
+      padding: 0;
+      margin: 0;
+  }
+
+  #content-div {
+      width: 100%;
+      height: auto;
+      margin-top: 20vh;
+  }
+
+  #acronym-letters {
+      font-size: 4.5em;
+  }
+
+  #acronym-words {
+      font-size: 1.25em;
+      color: #929292;
+  }
+
+  #gen-form {
+      margin-top: 2.5%;
+  }
+
+  #form-els {
+      height: 2.5em;
+  }
+
+  #submit-button {
+      height: 100%;
+      background-color: black;
+      border: 2px solid black;
+      color: white;
+      border-radius: 10px;
+  }
+
+  #gen-form input {
+      border: 2px solid black;
+      height: 100%;
+      text-indent: 10px;
+      border-radius: 10px;
+  }
+
+  #gen-form input:focus, #gen-form button:focus{
+    outline: none;
+ } 
+ 
+ #gen-form input:focus {
+    border-color: #0a58ca;
+  }

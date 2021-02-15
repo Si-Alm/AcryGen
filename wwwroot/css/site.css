@@ -52,6 +52,7 @@
       width: 100%;
       height: auto;
       margin-top: 20vh;
+      padding-bottom: .5em;
   }
 
   #acronym-letters {
@@ -63,6 +64,15 @@
       color: #929292;
   }
 
+  #acronym-words a {
+      text-decoration: none;
+      color: #929292;
+  }
+
+  #acronym-words a:hover {
+      color: black;
+  }
+  
   #gen-form {
       margin-top: 2.5%;
   }
@@ -89,7 +99,13 @@
   #gen-form input:focus, #gen-form button:focus{
     outline: none;
  } 
- 
+
  #gen-form input:focus {
     border-color: #0a58ca;
+  }
+
+  #tip-p {
+      font-size: .85em;
+      color: #929292;
+      margin-top: .25em;
   }

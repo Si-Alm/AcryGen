@@ -24,7 +24,7 @@ namespace AcryGen.Controllers
         [Route("/api/acronym")]
         public JsonResult Acronym([FromBody] string passedAcronym)
         {
-            string acronym = passedAcronym;//Regex.Replace(passedAcronym, "[^0-9a-zA-Z]+", "");
+            string acronym = Regex.Replace(passedAcronym, "[^0-9a-zA-Z]+", "");
             string[] fullAcronym = generator.getAcronym(acronym);
 
             return Json(new { phrase = fullAcronym[0], acronym = fullAcronym[1] });

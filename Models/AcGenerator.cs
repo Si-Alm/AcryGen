@@ -30,7 +30,7 @@ namespace AcryGen.Models
             var letters = getLetters(acronym);
             string fullString = "";
             string formattedAcronym = "";
-            //$"Data Source={environmentPath.ContentRootPath}/app.db"
+
             for (var i = 0; i < letters.Length; i++)
             {
                 var path = $"{environmentPath.ContentRootPath}/Dictionary/" + char.ToLower(letters[i]) + ".txt";

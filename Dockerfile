@@ -16,7 +16,8 @@ FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
 COPY --from=build-env /app/out .
 
-# Run the app on container startup
-# Use your project name for the second parameter
-# e.g. MyProject.dll
-ENTRYPOINT [ "dotnet", "AcryGen.dll", "--urls", "http://0.0.0.0:5000"]
+# testing entrypoint
+#ENTRYPOINT [ "dotnet", "AcryGen.dll"]
+
+# deployment entrypoint
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet AcryGen.dll

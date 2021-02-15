@@ -12,12 +12,14 @@ namespace AcryGen.Models
         private readonly ILogger<AcGenerator> logger;
         private IWebHostEnvironment environmentPath;
 
+        //simple constructor
         public AcGenerator(ILogger<AcGenerator> logger, IWebHostEnvironment environmentPath)
         {
             this.logger = logger;
             this.environmentPath = environmentPath;
         }
 
+        //get the individual letters of a passed acronym
         public char[] getLetters(string acronym)
         {
             char[] letters = acronym.ToCharArray();
@@ -25,6 +27,11 @@ namespace AcryGen.Models
             return letters;
         }
 
+        //function for actually getting the acronym
+        //all it does is loop through the letters of the acronym, pull a word for each letter by accessing its respective file
+        //  and pulling the value of a random line, then adding it to the full phrase string
+        //
+        //it returns the full generate phrase, as well as the formatted acronym
         public string[] getAcronym(string acronym)
         {
             var letters = getLetters(acronym);
@@ -40,13 +47,13 @@ namespace AcryGen.Models
                 fullString = fullString + char.ToUpper(line[0]) + line.Substring(1) + " ";
                 formattedAcronym = formattedAcronym + char.ToUpper(letters[i]);
 
-                if(i != letters.Length - 1)
+                if (i != letters.Length - 1)
                 {
                     formattedAcronym = formattedAcronym + ".";
                 }
             }
 
-            
+
 
 
             string[] fullAcronym = { fullString, formattedAcronym };

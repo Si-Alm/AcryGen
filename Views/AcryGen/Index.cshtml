@@ -15,6 +15,7 @@
 </head>
 <body>
 
+  <!--Header container-->
   <div class="container-fluid header">
     <div id="myNavbar">
       <h1 id="main-head">Acronym Generator</h1>
@@ -22,13 +23,18 @@
     </div>
   </div>
   
+<!--Responsive center container-->
 <div class="container-fluid text-center align-items-center" id="main-container">
     <div id="content-div">
+        <!--Elements to display acronym info-->
         <h1 id="acronym-letters">P.Y.A.H</h1>
         <h2 id="acronym-words">Put Your Acronym Here</h2>
   
+        <!--Simple form for generating the acronym-->
         <form method="GET" id="gen-form">
             <div id="form-els">
+
+                <!--Input field will only accept letters-->
                 <input type="text" placeholder="pyah" id="acronym-text" autocomplete="off" maxlength="10" onkeypress="return (event.charCode > 64 && 
                 event.charCode < 91) || (event.charCode > 96 && event.charCode < 123)">
                 <button id="submit-button" type="button" onclick="getAcronym()">
@@ -39,6 +45,8 @@
                 </button>
             </div>
         </form>
+
+        <!--Dynamic message to tell users they can see the definition of the words-->
         <p style="text-align: center; display: none;" id="tip-p">Click a word to see it's definition!</p>
     </div>
 </div>

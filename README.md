@@ -4,4 +4,4 @@ This is a super basic acronym generator. It simply pulls words that start with t
 
 Currently, I'm working to refine the list to avoid the nonsenical words that are currently showing up. Additionally, a better method for creating acronyms is being looked into, because they're bad right now - like real bad.
 
-The current version of this generator can be found at [acrygen.herokuap.com](acrygen.herokuapp.com)
+The current version of this generator can be found at [acrygen.herokuap.com](https://acrygen.herokuapp.com)

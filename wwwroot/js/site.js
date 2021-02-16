@@ -19,11 +19,11 @@ function getAcronym() {
                 let acronymWords = document.getElementById("acronym-words");
                 let words = response.phrase.split(" ");
                 acronymWords.innerHTML = "";
-
+                console.log(words);
                 //create an anchor tag that links to the dictionary definition of each generated word
                 for (let i = 0; i < words.length; i++) {
                     let appendValue = `<a href="https://www.merriam-webster.com/dictionary/${words[i]}" target="_blank">${words[i]} </a>`;
-                    acronymWords.insertAdjacentHTML('afterbegin', appendValue);
+                    acronymWords.insertAdjacentHTML('beforeend', appendValue);
                 }
 
                 //toggle the "tip" of being able to click on words

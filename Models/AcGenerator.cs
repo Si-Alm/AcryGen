@@ -54,8 +54,6 @@ namespace AcryGen.Models
             }
 
 
-
-
             string[] fullAcronym = { fullString, formattedAcronym };
 
             return fullAcronym;

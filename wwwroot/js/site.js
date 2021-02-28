@@ -1,7 +1,17 @@
 ﻿//function to request acronym from the backend and display it on page
 function getAcronym() {
-    //get entered acronym value
+    //get entered acronym and swear check values
     let acronym = document.getElementById("acronym-text").value;
+    let swearCheck = document.getElementById("swears-check").value == "on" ? true : false;
+
+    let viewModel = {
+        "acronym": acronym,
+        "noSwears": swearCheck
+    };
+
+    let sendData = {
+        "jsonString": JSON.stringify(viewModel)
+    }
 
     //acronyms need to be at least two characters
     if (acronym.length > 1) {
@@ -19,7 +29,7 @@ function getAcronym() {
                 let acronymWords = document.getElementById("acronym-words");
                 let words = response.phrase.split(" ");
                 acronymWords.innerHTML = "";
-                console.log(words);
+
                 //create an anchor tag that links to the dictionary definition of each generated word
                 for (let i = 0; i < words.length; i++) {
                     let appendValue = `<a href="https://www.merriam-webster.com/dictionary/${words[i]}" target="_blank">${words[i]} </a>`;
@@ -34,7 +44,7 @@ function getAcronym() {
         //actually send the request
         xhr.open('POST', '/api/acronym');
         xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(JSON.stringify(acronym));
+        xhr.send(JSON.stringify(sendData));
     }
 }
 
@@ -46,13 +56,43 @@ function sleep(ms) {
 //async function to inform the users they can see the words' defintions by clicking on them
 //  will display for 5 seconds each time an acronym is generated
 async function showTip() {
-    let tipEl = document.getElementById("tip-p");
+    //if the definition tip has been shown in the past day, don't display it again
+    if ("true" != getCookie("shownTip")) {
+        let tipEl = document.getElementById("tip-p");
 
-    tipEl.style.display = "block";
+        tipEl.style.display = "block";
 
-    //await sleep(5000);
+        //await sleep(5000);
 
-    sleep(5000).then(() => {
-        tipEl.style.display = "none";
-    })
+        sleep(5000).then(() => {
+            tipEl.style.display = "none";
+        });
+
+        setCookie("shownTip", "true", 1);
+    }
+}
+
+//simple function to set a cookie with a name, value, and n days until expiration
+function setCookie(cname, cvalue, exdays) {
+    var d = new Date();
+    d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+    var expires = "expires=" + d.toUTCString();
+    document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+//function to retrieve value of a given cookie
+function getCookie(cname) {
+    var name = cname + "=";
+    var decodedCookie = decodeURIComponent(document.cookie);
+    var ca = decodedCookie.split(';');
+    for (var i = 0; i < ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return "";
 }

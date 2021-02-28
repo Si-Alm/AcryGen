@@ -104,8 +104,20 @@
     border-color: #0a58ca;
   }
 
+  #swears-label {
+      margin-left: -12em;
+      font-size: .85em;
+  }
+
+  #swears-check {
+      height: 1em;
+      width: auto;
+  }
+
   #tip-p {
       font-size: .85em;
       color: #929292;
-      margin-top: .25em;
+      margin-top: 2em;
+      text-align: center;
+      display: none;
   }

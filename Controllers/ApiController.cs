@@ -3,6 +3,7 @@ using AcryGen.Models;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using System;
 
 namespace AcryGen.Controllers
 {
@@ -22,11 +23,14 @@ namespace AcryGen.Controllers
 
         [HttpPost]
         [Route("/api/acronym")]
-        public JsonResult Acronym([FromBody] string passedAcronym)
+        public JsonResult Acronym([FromBody] GeneratorViewModel gvm)
         {
+            //fill the object values from the json string
+            gvm.fillValues();
+
             //make sure the acronym is formatted for the generator, generate the acronym, and return the json - plain and simple
-            string acronym = Regex.Replace(passedAcronym, "[^0-9a-zA-Z]+", "");
-            string[] fullAcronym = generator.getAcronym(acronym);
+            string acronym = Regex.Replace(gvm.acronym, "[^0-9a-zA-Z]+", "");
+            string[] fullAcronym = generator.getAcronym(acronym, gvm.noSwears);
 
             return Json(new { phrase = fullAcronym[0], acronym = fullAcronym[1] });
         }
